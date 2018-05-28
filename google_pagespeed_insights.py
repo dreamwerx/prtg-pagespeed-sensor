@@ -1,5 +1,5 @@
 # Google Pagespeed Insights Sensor
-# Author: blair@tymbrel.com
+# Author: colbey@dreamwerx.net
 # Description: PRTG script that tests your webpage against the Pagespeed Insights API
 # https://developers.google.com/speed/docs/insights/v4/reference/pagespeedapi/runpagespeed
 
