@@ -7,7 +7,7 @@ on specific websites.  I've heard recently from some people in various positions
 they wanted to keep a close eye on the rating that Google gives there website, as it is taken into account in the rankings.
 
 The main issue they had was that a number of parts of there websites are dynamic and controlled / configurable by various teams, 
-who don't always pay attention to changes and what impact they might have (non-optimized images / non-scales images / crazy javascript being
+who don't always pay attention to changes and what impact they might have (non-optimized images / non-scaled images / crazy javascript being
 added in Google tag manager, etc.) - and it had happened multiple times that the website rating had dropped substantially and 
 nobody knew about it.
 
