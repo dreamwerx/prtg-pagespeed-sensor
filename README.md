@@ -11,7 +11,7 @@ who don't always pay attention to changes and what impact they might have (non-o
 added in Google tag manager, etc.) - and it had happened multiple times that the website rating had dropped substantially and 
 nobody knew about it.
 
-So I whipped up this sensor - And now they have the sensor running on a 12 hour interval and an alarm alterting them when it drops below a specific number.
+So I whipped up this sensor - And now they have the sensor running on a 12 hour interval and an alarm alerting them when it drops below a specific number.
 
 ### Requirements
 
