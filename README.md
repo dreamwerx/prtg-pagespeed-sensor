@@ -1,4 +1,8 @@
 # prtg-pagespeed-sensor
+
+2018-12-26 - Updated to use v5 API instead of V4.  The V5 takes into account much more data from lighthouse and seems to be
+mobile focused.
+
 A python based custom sensor for PRTG to collect Google pagespeed insights scores.  It collects 2 channels of data.  
 Desktop and mobile rankings.
 

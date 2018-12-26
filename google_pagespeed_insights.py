@@ -1,7 +1,7 @@
-# Google Pagespeed Insights Sensor
+# Google Pagespeed Insights Sensor (v5)
 # Author: colbey@dreamwerx.net
-# Description: PRTG script that tests your webpage against the Pagespeed Insights API
-# https://developers.google.com/speed/docs/insights/v4/reference/pagespeedapi/runpagespeed
+# Description: PRTG script that tests your webpage against the Pagespeed Insights API (v5)
+# https://developers.google.com/speed/docs/insights/v5/get-started
 
 import urllib.request
 import sys
@@ -9,7 +9,7 @@ import sys
 from paepy.ChannelDefinition import CustomSensorResult
 
 class PageSpeedSensor(object):
-	apiFormat = 'https://www.googleapis.com/pagespeedonline/v4/runPagespeed?locale=en&screenshot=false&url={0}&key={1}&strategy={2}'
+	apiFormat = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?locale=en&url={0}&key={1}&strategy={2}'
 	apiKey = ''
 	testUrl = ''
 
@@ -79,7 +79,8 @@ class PageSpeedSensor(object):
 			self.sendError('Communicating with API (check your key and url): ' + e2.msg)
 
 		jsonResult = json.loads(response)
-		return jsonResult['ruleGroups']['SPEED']['score']
+		return jsonResult['lighthouseResult']['categories']['performance']['score'] * 100
+
 
 # Main run
 sensor = PageSpeedSensor()
