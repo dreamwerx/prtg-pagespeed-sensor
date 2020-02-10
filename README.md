@@ -1,5 +1,9 @@
 # prtg-pagespeed-sensor
 
+2020-02-10 - Updated to work with updated PRTG.  Also PRTG still has older python 3.4 which pip refuses to install paepy.
+Also issue with urllib not accepting valid certificates - either a python or OS related issue - currently no time to investigate
+have bypassed that check - minimal risk.
+
 2018-12-26 - Updated to use v5 API instead of V4.  The V5 takes into account much more data from lighthouse and seems to be
 mobile focused.
 

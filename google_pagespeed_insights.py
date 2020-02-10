@@ -6,7 +6,8 @@
 import urllib.request
 import sys
 
-from paepy.ChannelDefinition import CustomSensorResult
+from prtg.sensor.result import CustomSensorResult
+from prtg.sensor.units import ValueUnit
 
 class PageSpeedSensor(object):
 	apiFormat = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?locale=en&url={0}&key={1}&strategy={2}'
@@ -16,7 +17,7 @@ class PageSpeedSensor(object):
 	def sendError(self, message):
 		result = CustomSensorResult()
 		result.add_error('Error occurred: ' + message)
-		print(result.get_json_result())
+		print(result.json_result)
 		exit(1)
 
 	def getApiUrl(self, strategy):
@@ -50,7 +51,7 @@ class PageSpeedSensor(object):
 			self.sendError('Test url not defined')
 
 	def getApiKey(self):
-		return self.apiKey;
+		return self.apiKey
 
 	def getTestUrl(self):
 		return self.testUrl
@@ -62,17 +63,20 @@ class PageSpeedSensor(object):
 		desktopScore = self.getScore(self.getApiUrl('desktop'))
 
 		sensor = CustomSensorResult(0)
-		sensor.add_channel(channel_name="Mobile Score",unit="Percent",value=mobileScore)
-		sensor.add_channel(channel_name="Desktop Score",unit="Percent",value=desktopScore)
+		sensor.add_channel(name="Mobile Score",unit="Percent",value=mobileScore)
+		sensor.add_channel(name="Desktop Score",unit="Percent",value=desktopScore)
 
 		# Send results
-		print(sensor.get_json_result())
+		print(sensor.json_result)
 
 	def getScore(self, apiUrl):
 		import json
+		import ssl
+		# Issue with either python 3.4 or OS certs
+		context = ssl._create_unverified_context()
 		req = urllib.request.Request(apiUrl)
 		try:
-			response = urllib.request.urlopen(req).read().decode('utf8')
+			response = urllib.request.urlopen(req, context=context).read().decode('utf8')
 		except urllib.error.HTTPError as e:
 			self.sendError('Communicating with API (check your key and url): ' + e.msg)
 		except Exception as e2:
